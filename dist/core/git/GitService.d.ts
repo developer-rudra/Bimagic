@@ -1,0 +1,33 @@
+import { DetailedStatus, BranchInfo, StashEntry } from '../../types/index.js';
+export declare class GitService {
+    private git;
+    private workingDir;
+    constructor(workingDir?: string);
+    setWorkingDir(dir: string): void;
+    getWorkingDir(): string;
+    isGitRepository(dirPath?: string): Promise<boolean>;
+    initRepository(dirPath?: string): Promise<void>;
+    getDetailedStatus(dirPath?: string): Promise<DetailedStatus>;
+    stageFiles(files: string[]): Promise<void>;
+    unstageFiles(files: string[]): Promise<void>;
+    stageAll(): Promise<void>;
+    unstageAll(): Promise<void>;
+    commit(message: string): Promise<void>;
+    getBranches(): Promise<BranchInfo[]>;
+    createBranch(name: string): Promise<void>;
+    switchBranch(name: string): Promise<void>;
+    deleteBranch(name: string, force?: boolean): Promise<void>;
+    renameBranch(oldName: string, newName: string): Promise<void>;
+    mergeBranch(branchName: string): Promise<void>;
+    getStashes(): Promise<StashEntry[]>;
+    createStash(message?: string): Promise<void>;
+    showStash(stashId: string): Promise<string>;
+    applyStash(stashId: string): Promise<void>;
+    popStash(stashId: string): Promise<void>;
+    dropStash(stashId: string): Promise<void>;
+    clearStashes(): Promise<void>;
+    push(remote?: string, branch?: string, force?: boolean): Promise<void>;
+    pull(remote?: string, branch?: string): Promise<void>;
+    clone(url: string, targetDir: string): Promise<void>;
+    sparseClone(url: string, targetDir: string, selectedPaths: string[]): Promise<void>;
+}
