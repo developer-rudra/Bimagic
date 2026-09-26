@@ -173,9 +173,3 @@ npm run test
 # Run CLI locally in development mode
 npm run dev
 ```
-
----
-
-## 📄 License
-
-MIT © Antigravity Team
